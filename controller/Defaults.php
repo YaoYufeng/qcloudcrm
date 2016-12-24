@@ -12,7 +12,7 @@ class DefaultsController extends \Tuanduimao\Loader\Controller {
 	}
 
 	function test() {
-		echo "Hello World!!!!"
+		echo "Hello World!!!!!"
 	}
 
 	function index() {
