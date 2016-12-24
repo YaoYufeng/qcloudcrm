@@ -54,8 +54,13 @@ class MobCustomerPanelController extends \Tuanduimao\Loader\Controller {
 	 */
 	function wechat(){
 
-		$we = new Wechat(['appid'=>'wxf427d2cb6ac66d2c','secret'=>'f393e0169885f0bca7d7d07604a5205c']);
+		$we = new Wechat([
+			'appid'=>'wx7c841a9e71bca1a1',
+			'secret'=>'e0c9c85d5ddcad1ab2c0444acb5cd43c'
+		]);
+		
 		$data = $we->getSignature();
+
 		App::render($data,'mobile/customer','panel.wechat');
 	}
 	

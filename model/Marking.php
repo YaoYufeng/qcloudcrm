@@ -12,9 +12,14 @@ use \Tuanduimao\Loader\App as App;
 // 标注
 class MarkingModel extends \YunsouModel {
 	 function __construct() {
-	 	$config = App::M('config');
-		$data = $config->getvalue('marking');
-		parent::__construct($data);
+	 	// $config = App::M('config');
+		// $data = $config->getvalue('marking');
+		parent::__construct([
+			 	"appId"=>"52930002", 
+			 	"Region"=>"gz",
+			 	'SecretID'=>'AKIDcEi3fI86MQNAlEHrxxpcFnHclIpD3fll',
+			 	'SecretKey'=>'0zscSBoGdty5BARI7veyb4teEx3992oT'
+			]);
 	 }
 
 	/**

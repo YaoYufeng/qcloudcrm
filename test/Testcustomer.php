@@ -17,35 +17,35 @@ use \Tuanduimao\Model as Model;
 use \Tuanduimao\Utils as Utils;
 
 class testCustomer extends PHPUnit_Framework_TestCase {
-		/**
-		 * 测试创建表
-		 * @return [type] [description]
-		 */
-		function test__schema() {
-			$csr = App::M("Customer");
-			$csr->__schema();
-			$columns = $csr->getColumns();
-			$this->assertEquals( in_array('address', $columns), true );
-		}
+        /**
+         * 测试创建表
+         * @return [type] [description]
+         */
+        function test__schema() {
+            $csr = App::M("Customer");
+            $csr->__schema();
+            $columns = $csr->getColumns();
+            $this->assertEquals( in_array('address', $columns), true );
+        }
 
-		/**
-		 * 添加程序
-		 * @return [type] [description]
-		 */
-		function testCreate() {
-			$csr = App::M("Customer");
-			$resp = $csr->create([
-			"id" => 1024,
-			"company" => "tuanduimao",
-			"name" => "test",
-			"title" => "test",
-			"email" => "maoshun@diancloud.com",
-			"mobile" => "13431113828",
-			"remark" => "testcontent",
-			"status" => "active"
-			]);
-			$this->assertEquals( $resp['id'],1024);
-		}
+        /**
+         * 添加程序
+         * @return [type] [description]
+         */
+        function testCreate() {
+            $csr = App::M("Customer");
+            $resp = $csr->create([
+            "id" => 1024,
+            "company" => "tuanduimao",
+            "name" => "test",
+            "title" => "test",
+            "email" => "maoshun@diancloud.com",
+            "mobile" => "13431113828",
+            "remark" => "testcontent",
+            "status" => "active"
+            ]);
+            $this->assertEquals( $resp['id'],1024);
+        }
 
 }
 

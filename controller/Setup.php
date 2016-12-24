@@ -12,45 +12,23 @@ class SetupController extends \Tuanduimao\Loader\Controller {
 	}
 
 
-
 	function install() {
-		$customer = App::M('customer');
-		$source = App::M('source');
-		$task = App::M('task');
-		$config = App::M('config');
-		
-		try {
-			$source->dropTable();
-			$customer->dropTable();
-			$task->dropTable();
-			$config->dropTable(); 
-		}catch( Excp $e) {
 
-			echo $e->toJSON();
-			return;
-
-		}
+		$hello = App::M('Hello');
 	
-		$source = App::M('source');
-		$customer = App::M('customer');
-		$task = App::M('task');
-		$config = App::M('config');
-		
+		try {
+			$hello->dropTable();
+		}catch( Excp $e) {}
+
 		try  {
-			$source->__schema();
-			$task->__schema();
-			$customer->__schema();
-			$config->__schema();
-			$config->default();
+			$hello->__schema();
 		}catch ( Excp $e ) {
 			echo $e->toJSON();
 			return;
 		}
 
-
 		echo json_encode('ok');
 	}
-
 
 
 	function upgrade(){
@@ -59,9 +37,9 @@ class SetupController extends \Tuanduimao\Loader\Controller {
 
 	function repair() {
 
-		$cust = App::M('Customer');
+		$hello = App::M('Hello');
 		try  {
-			$cust->__schema();
+			$hello->__schema();
 		}catch ( Excp $e ) {
 			echo $e->toJSON();
 			return;
@@ -70,26 +48,14 @@ class SetupController extends \Tuanduimao\Loader\Controller {
 		echo json_encode('ok');		
 	}
 
-
+	// 卸载
 	function uninstall() {
-	
-		$customer = App::M('customer');
-		$source = App::M('source');
-		$config = App::M('config');
-		$task = App::M('task');
 
-		try  {
-			$source->__clear();
-			$customer->__clear();
-			$task->__clear();
-			$config->__clear();
-		}catch ( Excp $e ) {
-			echo $e->toJSON();
-			return;
-		}
-
+		$hello = App::M('Hello');
+		try {
+			$hello->__clear();
+		}catch( Excp $e) {}
 
 		echo json_encode('ok');		
 	}
-	
 }

@@ -65,7 +65,11 @@ class MobCustomerDataController extends \Tuanduimao\Loader\Controller {
 		// @var Wechat
 		
 		$config = App::M('config');
-		$we = new Wechat($config->getvalue('wechat'));
+		$we = new Wechat([
+			'appid'=>'wx7c841a9e71bca1a1',
+			'secret'=>'e0c9c85d5ddcad1ab2c0444acb5cd43c'
+		]);
+		
 		
 		// 实例化youtu（优图）
 		// appid 
@@ -73,7 +77,12 @@ class MobCustomerDataController extends \Tuanduimao\Loader\Controller {
 		// SecretID
 		// SecretKey
 		
-		$yt = App::M("Youtu",$config->getvalue('youtu'));
+		$yt = App::M("Youtu",[
+			'appid'=>'10071180',
+			'bucket'=>'qcloud',
+			'SecretID'=>'AKIDsAORSK6UkpjR2RmsoZAdw65ucAdvr6uX',
+			'SecretKey'=>'jMrAJH4fACAxd8RqAhMPK3FOL7meNveI'
+		]);
 
 		// Wechat里面的方法
 		// 获取图片文件

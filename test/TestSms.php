@@ -1,10 +1,10 @@
-<?php 
-define('SEROOT', getenv('SEROOT') );
-define('TROOT', getenv('TROOT') );
-define('CWD', getenv('CWD') );
-define('APP_ROOT', getenv('APP_ROOT') );
+<?php
+define('SEROOT', getenv('SEROOT'));
+define('TROOT', getenv('TROOT'));
+define('CWD', getenv('CWD'));
+define('APP_ROOT', getenv('APP_ROOT'));
 
-require_once( SEROOT . "/loader/Autoload.php" );
+require_once(SEROOT . "/loader/Autoload.php");
 
 
 use \Tuanduimao\Loader\App as App;
@@ -19,27 +19,38 @@ use \Tuanduimao\Utils as Utils;
  *注意手机号
  * 信息测试
  */
-class TestSms extends PHPUnit_Framework_TestCase {
+class TestSms extends PHPUnit_Framework_TestCase
+{
 
 
+    function testSend()
+    {
 
-	function testSend() {
+        $config = App::M('config');
+        $Sms = App::M("sms", $config->getvalue('sms'));
+        $resp = $Sms->send('15506218525', "尊敬的客户张三您好！您的白金会员卡已生效，请在3天内激活，感谢合作和支持。");
 
-		$config = App::M('config');
-		$Sms = App::M("sms",$config->getvalue('sms'));
-		$resp = $Sms->send('18263721737',"尊敬的客户张三您好！您的白金会员卡已生效，请在3天内激活，感谢合作和支持。");
+        Utils::out("testSend\n", $resp);
 
-		$this->assertEquals($resp['result'],0);
+        $this->assertEquals($resp['result'], 0);
 
-
-
-	}
+    }
 
 
+    function testSendVoice()
+    {
 
+        $config = App::M('config');
+        $Sms = App::M("sms", $config->getvalue('sms'));
+        $resp = $Sms->sendvoice('15506218525', "尊敬的客户张三您好！您的白金会员卡已生效，请在3天内激活，感谢合作和支持。");
+
+        Utils::out("testSendVoice\n", $resp);
+
+        $this->assertEquals($resp['result'], 0);
+
+    }
 
 }
 
 
-
- ?>
+?>

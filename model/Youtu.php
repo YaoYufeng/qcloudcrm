@@ -48,14 +48,19 @@ class Youtumodel {
 	 * @return [type] [description]
 	 */
 	function update($url,$imageFilename=null){
-		$config = App::M('config');
-		$youtu = $config->getvalue('youtu');
+		$youtu = [
+			'appid'=>'10071180',
+			'bucket'=>'qcloud',
+			'SecretID'=>'AKIDsAORSK6UkpjR2RmsoZAdw65ucAdvr6uX',
+			'SecretKey'=>'jMrAJH4fACAxd8RqAhMPK3FOL7meNveI'
+		];
+
 		$youtu['file'] = $imageFilename;
 		$key = $this->sign($youtu);
 		$md5 = md5( $url );
 		$resp = Utils::Req(
 			"POST",
-			"http://web.image.myqcloud.com/photos/v2/"."10071180/"."youtu/0/",
+			"http://web.image.myqcloud.com/photos/v2/"."10071180/"."qcloud/0/",
 			[
 				"type" => "media",
 				"datatype"=>"json",
@@ -86,8 +91,14 @@ class Youtumodel {
 	 * @return [type] [description]
 	 */
 	function ocr($url){
-		$config = App::M('config');
-		$key = $this->sign($config->getvalue('youtu'));
+		
+		$key = $this->sign([
+			'appid'=>'10071180',
+			'bucket'=>'qcloud',
+			'SecretID'=>'AKIDsAORSK6UkpjR2RmsoZAdw65ucAdvr6uX',
+			'SecretKey'=>'jMrAJH4fACAxd8RqAhMPK3FOL7meNveI'
+		]);
+
 		//发送图片信息返回图片信息
 		$resp = Utils::Req(
 			"POST",
@@ -100,7 +111,7 @@ class Youtumodel {
 				],
 				"data" =>[
 					"appid" => "10071180",
-					"bucket" => "youtu",
+					"bucket" => "qcloud",
 					"ret_image"=>0,
 					"url_list" => [
 						$url

@@ -12,8 +12,12 @@ use \Tuanduimao\Loader\App as App;
 // 追踪
 class TrackingModel extends \YunsouModel{
 	function __construct() {
-		$config = App::M('config');
-		parent::__construct($config->getvalue('tracking'));
+		parent::__construct([
+			 	"appId"=>"52940002", 
+			 	"Region"=>"gz",
+			 	'SecretID'=>'AKIDcEi3fI86MQNAlEHrxxpcFnHclIpD3fll',
+			 	'SecretKey'=>'0zscSBoGdty5BARI7veyb4teEx3992oT'
+			]);
 	}
 
 	/**

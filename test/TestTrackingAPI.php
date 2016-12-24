@@ -29,7 +29,7 @@ class TestTrackingAPI extends PHPUnit_Framework_TestCase {
 
 
 			$tuan = new Tuan;
-			$resp = $tuan->call('/apps/qcloudcrm/Tracking/create',[],[
+			$resp = $tuan->call('/apps/crm/Tracking/create',[],[
 				[
 					"customerid"=>"10",
 					"oid" => rand('1','100'),
@@ -40,7 +40,7 @@ class TestTrackingAPI extends PHPUnit_Framework_TestCase {
 					"createat"=>date('Y-m-d'),
 					"id"=>rand('1','100')
 				],
-		
+				
 			]);
 
 			$this->assertEquals($resp['retcode'], 0 );	

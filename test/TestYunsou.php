@@ -18,8 +18,13 @@ use \Tuanduimao\Utils as Utils;
 
 class testCustomer extends PHPUnit_Framework_TestCase {
 	function testCreate() {
-		$config = App::M('config');
-		$ys = App::M("Yunsou",$config->getvalue('marking'));
+		$ys = App::M("Yunsou",[
+			 	"appId"=>"52930002", 
+			 	"Region"=>"gz",
+			 	'SecretID'=>'AKIDcEi3fI86MQNAlEHrxxpcFnHclIpD3fll',
+			 	'SecretKey'=>'0zscSBoGdty5BARI7veyb4teEx3992oT'
+			]);
+
 		$resp = $ys->create([
 
 				[
@@ -33,6 +38,9 @@ class testCustomer extends PHPUnit_Framework_TestCase {
 				'uid'=>'1'
 				]
 			]);
+
+		Utils::out( "\n", $resp,  "\n" );
+		
 		$this->assertEquals( $resp['code'], 0 );
 	}
 
@@ -43,9 +51,18 @@ class testCustomer extends PHPUnit_Framework_TestCase {
 	 */
 	function testSearch() {
 
-		$config = App::M('config');
-		$ys = App::M("Yunsou",$config->getvalue('marking'));
+		$ys = App::M("Yunsou",[
+			 	"appId"=>"52930002", 
+			 	"Region"=>"gz",
+			 	'SecretID'=>'AKIDcEi3fI86MQNAlEHrxxpcFnHclIpD3fll',
+			 	'SecretKey'=>'0zscSBoGdty5BARI7veyb4teEx3992oT'
+			]);
+
 		$key = $ys->search('test',['num'=>"[N:customerid:1:1]"],'1','1');
+
+		Utils::out( "\n", $key,  "\n" );
+
+
 		$this->assertEquals( $resp['code'], 0 );
 	}
 }

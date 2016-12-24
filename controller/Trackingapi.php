@@ -16,23 +16,12 @@ class TrackingAPIController extends \Tuanduimao\Loader\Controller {
 	function __construct() {
 	}
 
-	/**
-	 * 弹出标注
-	 * @return [type] [description]
-	 */
-	function index(){
 
-		// 实例化Tracking
-		$Tracking = App::M("Tracking");
-
-		// 获取当前id
-		$_id = !empty($_GET['_id'])?$_GET['_id']:"";
-		// 获取当前页号
-		$page= isset($_GET['page']) ?$_GET['page'] : "1";
-
-
-		$data = $Tracking ->searchpage($_id,$page);
-		App::render($data,'desktop/tracking','index');
+	// 创建接口
+	function create() {
+		$Tracking = App::M('Tracking');
+		$resp = $Tracking->create($this->data);
+		echo json_encode( $resp );
 	}
 
 
@@ -58,6 +47,29 @@ class TrackingAPIController extends \Tuanduimao\Loader\Controller {
 
 		echo json_encode($resp);
 	}
+
+
+	/**
+	 * 弹出标注
+	 * @return [type] [description]
+	 */
+	function index(){
+
+		// 实例化Tracking
+		$Tracking = App::M("Tracking");
+
+		// 获取当前id
+		$_id = !empty($_GET['_id'])?$_GET['_id']:"";
+		// 获取当前页号
+		$page= isset($_GET['page']) ?$_GET['page'] : "1";
+
+
+		$data = $Tracking ->searchpage($_id,$page);
+		App::render($data,'desktop/tracking','index');
+	}
+
+
+	
 
 	/**
 	 * 分页处理

@@ -36,14 +36,14 @@ class ConfigModel extends Model {
 	function default(){
 		$data = [
 			'wechat'=>[
-				'appid'=>'wxf427d2cb6ac66d2c',
-				'secret'=>'f393e0169885f0bca7d7d07604a5205c'
+				'appid'=>'wx2d42da8f00cda86f',
+				'secret'=>'cc261606688e141f9b51404088700a53'
 			],
 			'youtu'=>[
-				'appid'=>'10071180',
-				'bucket'=>'youtu',
-				'SecretID'=>'AKIDsAORSK6UkpjR2RmsoZAdw65ucAdvr6uX',
-				'SecretKey'=>'jMrAJH4fACAxd8RqAhMPK3FOL7meNveI'
+				'appid'=>'1252079924',
+				'bucket'=>'qcloudcrm',
+				'SecretID'=>'AKIDLbdPd8V5GAPlvnDl1txDW6vE6pttpCBd',
+				'SecretKey'=>'IGMl3igGoqiMbcSVKpYsrFKy4XUNtf6S'
 			],
 			'cos'=>[
 				'appid'=>'1252758974',

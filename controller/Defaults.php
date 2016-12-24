@@ -11,10 +11,40 @@ class DefaultsController extends \Tuanduimao\Loader\Controller {
 	function __construct() {
 	}
 
-	function test() {
-		echo "Hello World!";
+	function demodata() {
+
+		$csr = App::M('Customer');
+        
+        try {
+            $csr->dropTable();
+        } catch( Excp $e ) {}
+
+        try {
+             App::M('Customer')->__schema();
+        } catch( Excp $e) {}
+
+        // 生成随机数据
+        $faker = Utils::faker();
+        for( $i=0; $i<200; $i++ ) {
+            try {
+            $cust = $csr->create([
+                'company'=> $faker->company,
+                'name'=> $faker->name,
+                'title' => $faker->jobTitle,
+                'mobile'=> $faker->phoneNumber,
+                'email'=> $faker->email,
+                'address'=> $faker->address,
+                'remark'=> $faker->text(100),
+                'status'=>'active'
+            ]);} catch(Excp $e) {}
+        }
+
+        echo json_encode(["code"=>0, "message"=>"SUCCESS"]);
 	}
 
+	
+
+	
 	function index() {
 		$hello = App::M('Hello');
 		$data = $hello->select("LIMIT 20");
