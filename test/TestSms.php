@@ -26,8 +26,11 @@ class TestSms extends PHPUnit_Framework_TestCase
     function testSend()
     {
 
-        $config = App::M('config');
-        $Sms = App::M("sms", $config->getvalue('sms'));
+//        $config = App::M('config');
+        $Sms = App::M("sms", [
+            "AppID" => "1400017564",
+            "AppKey" => "2b9f1e3ef8e81ebb5cf4f2b9d1433fe0"
+        ]);
         $resp = $Sms->send('15506218525', "尊敬的客户张三您好！您的白金会员卡已生效，请在3天内激活，感谢合作和支持。");
 
         Utils::out("testSend\n", $resp);
@@ -40,12 +43,14 @@ class TestSms extends PHPUnit_Framework_TestCase
     function testSendVoice()
     {
 
-        $config = App::M('config');
-        $Sms = App::M("sms", $config->getvalue('sms'));
+//        $config = App::M('config');
+        $Sms = App::M("sms", [
+            "AppID" => "1400017564",
+            "AppKey" => "2b9f1e3ef8e81ebb5cf4f2b9d1433fe0"
+        ]);
         $resp = $Sms->sendvoice('15506218525', "尊敬的客户张三您好！您的白金会员卡已生效，请在3天内激活，感谢合作和支持。");
 
         Utils::out("testSendVoice\n", $resp);
-
         $this->assertEquals($resp['result'], 0);
 
     }
