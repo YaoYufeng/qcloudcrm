@@ -32,7 +32,7 @@ class SmsModel
             "AppKey" => "2b9f1e3ef8e81ebb5cf4f2b9d1433fe0"
         ];
 //        $config = App::M('config');
-        $AppKey = $config->getvalue('sms')['AppKey'];
+        $AppKey = $config['AppKey'];
         return md5("{$AppKey}{$mobile}");
     }
 
