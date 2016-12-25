@@ -45,8 +45,11 @@ class SmsModel
     function send($mobile, $content)
     {
         $sig = $this->sign($mobile);
-        $config = App::M('config');
-        $datames = $config->getvalue('sms');
+//        $config = App::M('config');
+        $datames = [
+            "AppID" => "1400017564",
+            "AppKey" => "2b9f1e3ef8e81ebb5cf4f2b9d1433fe0"
+        ];
         $resp = Utils::Req(
             "POST",
             "https://yun.tim.qq.com/v3/tlssmssvr/sendsms",
@@ -90,8 +93,11 @@ class SmsModel
     function sendvoice($mobile, $content)
     {
         $sig = $this->sign($mobile);
-        $config = App::M('config');
-        $datasms = $config->getvalue('sms');
+//        $config = App::M('config');
+        $datasms = $config = [
+            "AppID" => "1400017564",
+            "AppKey" => "2b9f1e3ef8e81ebb5cf4f2b9d1433fe0"
+        ];
         $resp = Utils::Req(
             "POST",
             "https://yun.tim.qq.com/v3/tlsvoicesvr/sendvoiceprompt",
