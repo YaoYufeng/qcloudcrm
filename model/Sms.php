@@ -27,11 +27,11 @@ class SmsModel
 
     function sign($mobile)
     {
-//		$config = [
-//				"AppID"=>"1400017564",
-//			 	"AppKey"=>"2b9f1e3ef8e81ebb5cf4f2b9d1433fe0"
-//			];
-        $config = App::M('config');
+        $config = [
+            "AppID" => "1400017564",
+            "AppKey" => "2b9f1e3ef8e81ebb5cf4f2b9d1433fe0"
+        ];
+//        $config = App::M('config');
         $AppKey = $config->getvalue('sms')['AppKey'];
         return md5("{$AppKey}{$mobile}");
     }
